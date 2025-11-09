@@ -1,0 +1,137 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Conda
+.conda/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+.hypothesis/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre
+.pyre/
+
+# Logs
+logs/
+*.log
+
+# Data files
+data/
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+
+# Models
+models/
+*.zip
+*.pth
+*.pt
+
+# TensorBoard
+tensorboard/
+runs/
+
+# Results
+results/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.pdf
+*.mp4
+*.avi
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# MATLAB
+*.asv
+*.m~
+
+# Documentation build
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Configuration (user-specific)
+config/local_config.yaml
+config/user_config.yaml
+
+# Exclude example outputs but keep the directory
+examples/*.png
+examples/*.pdf
+examples/*.log
+examples/data/
+
+# Keep important files
+!.gitignore
+!README.md
+!CONTRIBUTING.md

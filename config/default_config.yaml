@@ -1,0 +1,101 @@
+# 默认配置文件
+# 本配置文件包含仿真、控制和强化学习的基础参数
+
+# 仿真参数
+simulation:
+  timestep: 0.01        # 仿真时间步长（秒）
+  duration: 10.0        # 仿真持续时间（秒）
+  gravity: [0, 0, -9.81]  # 重力加速度向量 [x, y, z]
+  render: false         # 是否启用可视化渲染
+  fps: 60               # 渲染帧率（仅在 render=true 时有效）
+
+# 控制器参数
+control:
+  type: pid             # 控制器类型: pid, lqr, mpc
+  
+  # PID 控制器参数
+  pid:
+    kp: 1.0             # 比例增益
+    ki: 0.1             # 积分增益
+    kd: 0.01            # 微分增益
+    anti_windup: true   # 是否启用抗积分饱和
+    output_limits:      # 输出限制
+      min: -10.0
+      max: 10.0
+  
+  # LQR 控制器参数
+  lqr:
+    q_matrix: [1.0, 1.0, 1.0, 1.0]  # 状态权重矩阵对角元素
+    r_matrix: [0.1]                  # 控制输入权重矩阵对角元素
+  
+  # MPC 控制器参数
+  mpc:
+    horizon: 10         # 预测时域
+    control_horizon: 5  # 控制时域
+    q_matrix: [1.0, 1.0, 1.0, 1.0]
+    r_matrix: [0.1]
+
+# 日志配置
+logging:
+  level: INFO           # 日志级别: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  log_dir: logs         # 日志文件保存目录
+  save_frequency: 100   # 日志保存频率（每 N 步保存一次）
+  console_output: true  # 是否输出到控制台
+  file_output: true     # 是否输出到文件
+
+# 强化学习参数
+rl:
+  algorithm: PPO        # 算法类型: PPO, SAC, TD3, A2C
+  total_timesteps: 100000  # 总训练步数
+  
+  # PPO 算法参数
+  ppo:
+    learning_rate: 0.0003    # 学习率
+    n_steps: 2048            # 每次更新的步数
+    batch_size: 64           # 批次大小
+    n_epochs: 10             # 训练轮数
+    gamma: 0.99              # 折扣因子
+    gae_lambda: 0.95         # GAE 参数
+    clip_range: 0.2          # PPO 裁剪范围
+    ent_coef: 0.0            # 熵系数
+    vf_coef: 0.5             # 价值函数系数
+    max_grad_norm: 0.5       # 梯度裁剪
+  
+  # SAC 算法参数
+  sac:
+    learning_rate: 0.0003
+    buffer_size: 1000000     # 经验回放缓冲区大小
+    learning_starts: 100     # 开始学习的步数
+    batch_size: 256
+    tau: 0.005               # 软更新系数
+    gamma: 0.99
+    ent_coef: auto           # 熵系数（auto 表示自动调整）
+  
+  # 网络架构
+  policy:
+    type: MlpPolicy          # 策略网络类型
+    net_arch:
+      - 256
+      - 256                  # 隐藏层神经元数量
+    activation: relu         # 激活函数: relu, tanh, sigmoid
+  
+  # 训练设置
+  training:
+    save_freq: 10000         # 模型保存频率
+    eval_freq: 5000          # 评估频率
+    eval_episodes: 10        # 评估回合数
+    model_dir: models        # 模型保存目录
+    log_dir: tensorboard     # TensorBoard 日志目录
+
+# PyBullet 环境参数
+pybullet:
+  connection_mode: DIRECT   # 连接模式: DIRECT (无渲染), GUI (有渲染)
+  debug_visualizer: false   # 是否启用调试可视化
+  real_time_simulation: false  # 是否使用实时仿真
+
+# MATLAB 联合仿真参数
+matlab:
+  enabled: false            # 是否启用 MATLAB 联合仿真
+  engine_path: null         # MATLAB Engine 路径（null 表示自动检测）
+  model_path: matlab/models  # Simscape 模型路径
+  sync_frequency: 10        # 与 PyBullet 同步频率（每 N 步）
