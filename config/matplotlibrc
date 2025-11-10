@@ -1,0 +1,240 @@
+# Matplotlib配置文件 - 中文字体优化版本
+# 该配置文件预设了完整的matplotlib参数，确保中文显示正常工作
+
+# ==================== 字体配置 ====================
+# 字体族设置
+font.family : sans-serif
+font.serif : SimHei, Times New Roman, DejaVu Serif, Bitstream Vera Serif, Computer Modern Roman, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Times Palatino, Charter, serif
+font.sans-serif : SimHei, Microsoft YaHei, SimSun, KaiTi, FangSong, WenQuanYi Zen Hei, Noto Sans CJK SC, DejaVu Sans, Bitstream Vera Sans, Computer Modern Sans Serif, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
+font.cursive : SimHei, Apple Chancery, Textile, Zapf Chancery, Sand, Script MT, Felipa, cursive
+font.fantasy : SimHei, Comic Sans MS, Chicago, Charcoal, Impact, Western, fantasy
+font.monospace : Courier New, DejaVu Sans Mono, Bitstream Vera Sans Mono, Computer Modern Typewriter, Andale Mono, Lucida Console, Nimbus Mono L, Monaco, monospace
+
+# 字体大小设置
+font.size : 12.0
+font.weight : normal
+font.stretch : normal
+
+# ==================== 文本配置 ====================
+# LaTeX设置（禁用以避免中文问题）
+text.usetex : false
+text.latex.preamble : 
+text.latex.preview : false
+text.dvipnghack : none
+text.hinting : auto
+text.hinting_factor : 8
+text.antialiased : true
+text.kerning_factor : 6
+text.parse_math : false
+
+# ==================== 图形配置 ====================
+# 图形尺寸和DPI
+figure.titlesize : 16.0
+figure.titleweight : bold
+figure.labelsize : 12.0
+figure.labelweight : normal
+figure.facecolor : white
+figure.edgecolor : white
+figure.figsize : 6.4, 4.8
+figure.dpi : 100
+figure.autolayout : false
+figure.constrained_layout.use : true
+figure.constrained_layout.h_pad : 0.04167
+figure.constrained_layout.w_pad : 0.04167
+figure.constrained_layout.hspace : 0.02
+figure.constrained_layout.wspace : 0.02
+figure.constrained_layout.h_pad : 0.04167
+figure.constrained_layout.w_pad : 0.04167
+figure.max_open_warning : 20
+figure.raise_window : true
+
+# ==================== 坐标轴配置 ====================
+# 坐标轴标签和标题
+axes.titlesize : 14.0
+axes.titleweight : bold
+axes.titlepad : 6.0
+axes.labelsize : 12.0
+axes.labelweight : normal
+axes.labelpad : 10.0
+axes.labelcolor : black
+axes.axisbelow : line
+axes.formatter.limits : -7, 7
+axes.formatter.use_locale : false
+axes.formatter.use_mathtext : false
+axes.formatter.useoffset : true
+axes.formatter.offset_threshold : 4
+axes.unicode_minus : false  # 重要：防止负号显示为方框
+axes.prop_cycle : cycler('color', ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'])
+
+# 坐标轴外观
+axes.facecolor : white
+axes.edgecolor : black
+axes.linewidth : 1.0
+axes.grid : true
+axes.grid.axis : both
+axes.grid.which : major
+axes.linewidth : 1.0
+
+# 坐标轴范围和边距
+axes.xmargin : 0.05
+axes.ymargin : 0.05
+axes.zmargin : 0.05
+axes.autolimit_mode : data
+
+# ==================== 刻度配置 ====================
+# X轴刻度
+xtick.top : false
+xtick.bottom : true
+xtick.labeltop : false
+xtick.labelbottom : true
+xtick.major.size : 3.5
+xtick.minor.size : 2.0
+xtick.major.width : 0.8
+xtick.minor.width : 0.6
+xtick.major.pad : 3.5
+xtick.minor.pad : 3.4
+xtick.color : black
+xtick.labelcolor : black
+xtick.labelsize : 11.0
+xtick.direction : in
+xtick.minor.visible : false
+xtick.major.top : true
+xtick.major.bottom : true
+xtick.minor.top : true
+xtick.minor.bottom : true
+xtick.align.yaxis : true
+
+# Y轴刻度
+ytick.left : true
+ytick.right : false
+ytick.labelleft : true
+ytick.labelright : false
+ytick.major.size : 3.5
+ytick.minor.size : 2.0
+ytick.major.width : 0.8
+ytick.minor.width : 0.6
+ytick.major.pad : 3.5
+ytick.minor.pad : 3.4
+ytick.color : black
+ytick.labelcolor : black
+ytick.labelsize : 11.0
+ytick.direction : in
+ytick.minor.visible : false
+ytick.major.left : true
+ytick.major.right : true
+ytick.minor.left : true
+ytick.minor.right : true
+ytick.align.xaxis : true
+
+# ==================== 网格配置 ====================
+grid.color : gray
+grid.linestyle : --
+grid.linewidth : 0.5
+grid.alpha : 0.3
+
+# ==================== 图例配置 ====================
+legend.fontsize : 11.0
+legend.title_fontsize : 12.0
+legend.framealpha : 0.9
+legend.fancybox : true
+legend.shadow : true
+legend.numpoints : 1
+legend.scatterpoints : 1
+legend.markerscale : 1.0
+legend.borderpad : 0.4
+legend.labelspacing : 0.5
+legend.handlelength : 2.0
+legend.handleheight : 0.7
+legend.handletextpad : 0.8
+legend.borderaxespad : 0.5
+legend.columnspacing : 2.0
+legend.loc : best
+
+# ==================== 线条配置 ====================
+lines.linewidth : 1.5
+lines.linestyle : -
+lines.color : C0
+lines.marker : None
+lines.markeredgewidth : 1.0
+lines.markersize : 6.0
+lines.dash_joinstyle : miter
+lines.dash_capstyle : butt
+lines.solid_capstyle : projecting
+lines.antialiased : true
+lines.clip_on : true
+
+# ==================== 补丁配置 ====================
+patch.linewidth : 1.0
+patch.facecolor : C0
+patch.edgecolor : black
+patch.force_edgecolor : false
+patch.antialiased : true
+
+# ==================== 路径配置 ====================
+path.effects : 
+path.simplify : true
+path.simplify_threshold : 0.111111111111
+path.sketch : 
+path.snap : true
+
+# ==================== 保存图形配置 ====================
+savefig.dpi : 300
+savefig.facecolor : white
+savefig.edgecolor : white
+savefig.format : png
+savefig.bbox : tight
+savefig.pad_inches : 0.1
+savefig.directory : 
+savefig.transparent : false
+savefig.orientation : portrait
+savefig.jpeg_quality : 95
+savefig.webp_quality : 75
+savefig.crop : true
+
+# ==================== 后端配置 ====================
+# 后端设置（自动选择）
+backend : Agg  # 默认使用非交互式后端，适合服务器环境
+
+# ==================== 交互配置 ====================
+interactive : false
+figure.hooks : 
+
+# ==================== 动画配置 ====================
+animation.html : none
+animation.writer : ffmpeg
+animation.codec : h264
+animation.bitrate : -1
+animation.frame_format : png
+animation.html_args : 
+animation.embed_limit : 20.0
+
+# ==================== 其他配置 ====================
+# 错误处理
+errorbar.capsize : 3.0
+
+# 直方图
+hist.bins : 10
+
+# 色彩映射
+image.cmap : viridis
+image.interpolation : antialiased
+image.composite_image : true
+image.resample : true
+
+# 颜色周期
+axes.color_cycle : #1f77b4, #ff7f0e, #2ca02c, #d62728, #9467bd, #8c564b, #e377c2, #7f7f7f, #bcbd22, #17becf
+
+# 3D图形
+axes3d.grid : true
+
+# 日期配置
+date.autoformatter.year : %Y
+date.autoformatter.month : %Y-%m
+date.autoformatter.day : %Y-%m-%d
+date.autoformatter.hour : %m-%d %H
+date.autoformatter.minute : %d %H:%M
+date.autoformatter.second : %H:%M:%S
+date.autoformatter.microsecond : %M:%S.%f
+
+# 日志级别
+log.level : INFO

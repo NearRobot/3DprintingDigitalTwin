@@ -21,8 +21,10 @@ sys.path.insert(0, str(project_root))
 
 # 在 utils 可用后再导入
 from utils import (  # noqa: E402
+    complete_chinese_font_setup,
     get_font_config_info,
     list_available_chinese_fonts,
+    quick_fix_chinese_display,
     setup_chinese_font,
 )
 
@@ -32,14 +34,28 @@ def demo_basic_plot():
     演示基础的中文绘图
 
     创建一个简单的折线图，包含中文标题、轴标签和图例。
+    使用完整的中文字体配置解决方案。
     """
     print("=" * 50)
-    print("演示 1: 基础中文绘图")
+    print("演示 1: 基础中文绘图（完整配置）")
     print("=" * 50)
 
-    # 配置中文字体
-    font_name = setup_chinese_font()
-    print(f"✓ 已配置字体: {font_name}")
+    # 使用完整配置方案
+    result = complete_chinese_font_setup(
+        auto_install=True,
+        clear_cache=True,
+        enable_warnings=False
+    )
+    
+    if result['status'] == 'success':
+        font_name = result['font_name']
+        print(f"✓ 已配置字体: {font_name}")
+        for step in result['steps_completed']:
+            print(f"  ✓ {step}")
+    else:
+        print("✗ 完整配置失败，尝试基础配置...")
+        font_name = setup_chinese_font()
+        print(f"✓ 已配置字体: {font_name}")
 
     # 打印当前字体配置信息
     config_info = get_font_config_info()
@@ -279,16 +295,33 @@ def demo_chinese_text():
     plt.close()
 
 
+def demo_quick_fix():
+    """
+    演示快速修复功能
+    """
+    print("\n" + "=" * 50)
+    print("演示 0: 快速修复功能")
+    print("=" * 50)
+
+    print("尝试快速修复中文显示问题...")
+    success = quick_fix_chinese_display()
+    
+    if success:
+        print("✓ 快速修复成功！")
+    else:
+        print("✗ 快速修复失败，将使用手动配置")
+
+
 def main():
     """
     主函数：运行所有演示
     """
     print("\n")
-    print("╔" + "=" * 48 + "╗")
-    print("║" + " " * 48 + "║")
-    print("║" + "  Matplotlib 中文字体配置演示程序".center(48) + "║")
-    print("║" + " " * 48 + "║")
-    print("╚" + "=" * 48 + "╝")
+    print("╔" + "=" * 58 + "╗")
+    print("║" + " " * 58 + "║")
+    print("║" + "  Matplotlib 中文字体配置完整演示程序".center(58) + "║")
+    print("║" + " " * 58 + "║")
+    print("╚" + "=" * 58 + "╝")
 
     # 列出可用的中文字体
     print("\n检测系统中可用的中文字体:")
@@ -298,9 +331,12 @@ def main():
         for font in available_fonts:
             print(f"  - {font}")
     else:
-        print("✗ 未找到中文字体，某些演示可能无法正常显示")
+        print("✗ 未找到中文字体，将尝试自动安装")
 
     try:
+        # 演示快速修复功能
+        demo_quick_fix()
+        
         # 运行所有演示
         demo_basic_plot()
         demo_multi_subplot()
@@ -315,7 +351,11 @@ def main():
         print("  - demo_multi_subplot.png")
         print("  - demo_scatter_plot.png")
         print("  - demo_chinese_text.png")
-        print("\n所有中文内容应该能正确显示，而不是显示为方框。")
+        print("\n🎉 所有中文内容应该能正确显示，而不是显示为方框。")
+        print("\n💡 提示:")
+        print("  - 如果仍有问题，运行: python examples/diagnose_chinese_font.py")
+        print("  - 运行测试: python tests/test_chinese_plotting.py")
+        print("  - 手动修复: from utils import complete_chinese_font_setup")
 
     except Exception as e:
         print(f"\n✗ 演示过程中出现错误: {e}")
